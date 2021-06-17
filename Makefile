@@ -1,5 +1,10 @@
-helloworld: helloworld.cc
+.PHONY: all
+all: helloworld
 
-PHONY: clean
+.PHONY: clean
 clean:
-	rm -f helloworld
+	rm -f helloworld.o helloworld
+
+OBJECTS=helloworld.o
+helloworld: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -o helloworld $(LDFLAGS)
